@@ -2904,7 +2904,7 @@ const struct Item gItems[] =
     {
         .name = _("Lucky Egg"),
         .itemId = ITEM_LUCKY_EGG,
-        .price = 200,
+        .price = 8000,
         .holdEffect = HOLD_EFFECT_LUCKY_EGG,
         .description = sLuckyEggDesc,
         .pocket = POCKET_ITEMS,
@@ -3882,7 +3882,7 @@ const struct Item gItems[] =
     {
         .name = _("Eon Ticket"),
         .itemId = ITEM_EON_TICKET,
-        .price = 0,
+        .price = 10000,
         .description = sEonTicketDesc,
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
@@ -5133,7 +5133,7 @@ const struct Item gItems[] =
     {
         .name = _("MysticTicket"),
         .itemId = ITEM_MYSTIC_TICKET,
-        .price = 0,
+        .price = 10000,
         .description = sMysticTicketDesc,
         .importance = 1,
         .unk19 = 1,
@@ -5147,7 +5147,7 @@ const struct Item gItems[] =
     {
         .name = _("AuroraTicket"),
         .itemId = ITEM_AURORA_TICKET,
-        .price = 0,
+        .price = 10000,
         .description = sAuroraTicketDesc,
         .importance = 1,
         .unk19 = 1,
@@ -5219,7 +5219,7 @@ const struct Item gItems[] =
     {
         .name = _("Old Sea Map"),
         .itemId = ITEM_OLD_SEA_MAP,
-        .price = 0,
+        .price = 10000,
         .description = sOldSeaMapDesc,
         .importance = 1,
         .unk19 = 1,

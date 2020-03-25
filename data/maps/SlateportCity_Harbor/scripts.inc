@@ -555,3 +555,4 @@ SlateportCity_Harbor_Text_HandedScannerToStern: @ 820D94A
 SlateportCity_Harbor_Text_ThisWillHelpResearch: @ 820D970
 	.string "CAPT. STERN: Thanks, {PLAYER}{KUN}!\n"
 	.string "This will help our research a lot!$"
+

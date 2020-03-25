@@ -20,6 +20,10 @@ MossdeepCity_Mart_Pokemart: @ 82223E0
 	.2byte ITEM_FULL_HEAL
 	.2byte ITEM_REVIVE
 	.2byte ITEM_MAX_REPEL
+	.2byte ITEM_LIGHT_CLAY
+	.2byte ITEM_MENTAL_HERB
+	.2byte ITEM_WHITE_HERB
+	.2byte ITEM_LUCKY_EGG
 	.2byte ITEM_X_ATTACK
 	.2byte ITEM_X_DEFENSE
 	.2byte ITEM_NONE

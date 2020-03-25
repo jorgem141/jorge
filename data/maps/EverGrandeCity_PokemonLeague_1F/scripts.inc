@@ -42,6 +42,10 @@ EverGrandeCity_PokemonLeague_1F_Pokemart: @ 8229624
 	.2byte ITEM_FULL_HEAL
 	.2byte ITEM_REVIVE
 	.2byte ITEM_MAX_REPEL
+	.2byte ITEM_LIFE_ORB
+	.2byte ITEM_CHOICE_SCARF
+	.2byte ITEM_CHOICE_BAND
+	.2byte ITEM_CHOICE_SPECS
 	.2byte ITEM_NONE
 	release
 	end

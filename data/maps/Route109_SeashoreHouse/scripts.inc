@@ -179,3 +179,44 @@ Route109_SeashoreHouse_Text_SimonPostBattle: @ 82699DF
 	.string "for carrying me across water on its\l"
 	.string "back, I could get rid of this inner tube.$"
 
+Route109_SeashoreHouse_GivePokemonSmoochum::
+	lock
+	faceplayer
+	goto_if_set FLAG_SMOOCHUM_GOT, Script_Smoochum_Got
+	msgbox Text_TakeSmoochum, MSGBOX_DEFAULT
+	getpartysize
+	compare VAR_RESULT, 6
+	goto_if_eq Script_PlayerHasFullParty
+	givemon SPECIES_SMOOCHUM, 15, ITEM_NONE
+	playfanfare MUS_FANFA4
+	msgbox Text_RecievedSmoochum, MSGBOX_DEFAULT
+	setflag [FLAG_SMOOCHUM_GOT]
+	waitfanfare
+	release
+	end
+	
+Script_PlayerHasFullParty::
+	msgbox Text_PlayerHasFullParty, MSGBOX_DEFAULT
+	release
+	end
+	
+Text_TakeSmoochum:
+	.string "Are you a trainer?\n"
+	.string "I can tell from your fiery spirit!\l"
+	.string "It's so hot I might just burn!\n"
+	.string "Maybe this pokemon can help you cool down.$"
+	
+Text_RecievedSmoochum:
+	.string "{PLAYER} received a Smoochum!$"
+	
+Text_PlayerHasFullParty:
+	.string "Oh, it looks like your party is full.$"
+	
+Script_Smoochum_Got:
+	msgbox Text_Smoochum_Got, MSGBOX_DEFAULT
+	release
+	end
+
+Text_Smoochum_Got:
+	.string "Has Smoochum taught you\n"
+	.string "how to cool down?$"

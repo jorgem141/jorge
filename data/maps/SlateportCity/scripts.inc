@@ -127,12 +127,22 @@ SlateportCity_EventScript_EnergyGuru:: @ 81DCDBD
 	end
 
 SlateportCity_Pokemart_EnergyGuru: @ 81DCDD4
-	.2byte ITEM_PROTEIN
-	.2byte ITEM_IRON
-	.2byte ITEM_CARBOS
-	.2byte ITEM_ZINC
-	.2byte ITEM_CALCIUM
-	.2byte ITEM_HP_UP
+	.2byte ITEM_FIRE_STONE
+	.2byte ITEM_LEAF_STONE
+	.2byte ITEM_THUNDER_STONE
+	.2byte ITEM_LEAF_STONE
+	.2byte ITEM_ICE_STONE
+	.2byte ITEM_MOON_STONE
+	.2byte ITEM_SUN_STONE
+	.2byte ITEM_DUSK_STONE
+	.2byte ITEM_DAWN_STONE
+	.2byte ITEM_SHINY_STONE
+	.2byte ITEM_UP_GRADE
+	.2byte ITEM_DUBIOUS_DISC
+	.2byte ITEM_MAGMARIZER
+	.2byte ITEM_ELECTIRIZER
+	.2byte ITEM_RAZOR_FANG
+	.2byte ITEM_PROTECTOR
 	.2byte ITEM_NONE
 	release
 	end
@@ -943,7 +953,7 @@ SlateportCity_EventScript_BerryCrushRankingsSign:: @ 81DD643
 	end
 
 SlateportCity_Text_EnergyGuruSellWhatYouNeed: @ 81DD64A
-	.string "I'm the ENERGY GURU! I'll go for it and\n"
+	.string "I'm the EVOLUTION GURU! I'll go for it and\n"
 	.string "sell you what you need!$"
 
 SlateportCity_Text_OhYourPokemon: @ 81DD68A
