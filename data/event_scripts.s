@@ -1059,3 +1059,13 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/text/frontier_brain.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
+
+	.include "data/maps/AlterinCave_ice/scripts.inc"
+
+	.include "data/maps/AlteringCave_Fire/scripts.inc"
+
+	.include "data/maps/AlteringCave_Forest/scripts.inc"
+
+	.include "data/maps/AlteringCave_Water/scripts.inc"
+
+	.include "data/maps/AlteringCave_Electric/scripts.inc"

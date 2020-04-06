@@ -412,3 +412,73 @@ SlateportCity_PokemonFanClub_Text_Zigzagoon: @ 820AD6E
 SlateportCity_PokemonFanClub_Text_Azumarill: @ 820AD80
 	.string "AZUMARILL: Marimari?$"
 
+SlateportCity_PokemonFanClub_EventScript_Trader::
+	lock
+	faceplayer
+	goto_if_set FLAG_FANCLUB_NPC_TRADE_COMPLETED, SlateportCity_PokemonFanClub_EventScript_TradeCompleted
+	setvar VAR_0x8008, INGAME_TRADE_SEEL
+	copyvar VAR_0x8004, VAR_0x8008
+	specialvar VAR_RESULT, GetInGameTradeSpeciesInfo
+	copyvar VAR_0x8009, VAR_RESULT
+	msgbox SlateportCity_PokemonFanClub_Text_IllTradeIfYouWant, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq SlateportCity_PokemonFanClub_EventScript_DeclineTrade
+	special ChoosePartyMon
+	waitstate
+	copyvar VAR_0x800A, VAR_0x8004
+	compare VAR_0x8004, 255
+	goto_if_eq SlateportCity_PokemonFanClub_EventScript_DeclineTrade
+	copyvar VAR_0x8005, VAR_0x800A
+	specialvar VAR_RESULT, GetTradeSpecies
+	copyvar VAR_0x800B, VAR_RESULT
+	compare VAR_RESULT, VAR_0x8009
+	goto_if_ne SlateportCity_PokemonFanClub_EventScript_NotRequestedMon
+	copyvar VAR_0x8004, VAR_0x8008
+	copyvar VAR_0x8005, VAR_0x800A
+	special CreateInGameTradePokemon
+	special DoInGameTradeScene
+	waitstate
+	msgbox SlateportCity_PokemonFanClub_Text_PleaseBeGoodToMyPokemon, MSGBOX_DEFAULT
+	setflag FLAG_FANCLUB_NPC_TRADE_COMPLETED
+	release
+	end
+
+SlateportCity_PokemonFanClub_EventScript_DeclineTrade::
+	msgbox SlateportCity_PokemonFanClub_Text_YouDontWantToThatsOkay, MSGBOX_DEFAULT
+	release
+	end
+
+SlateportCity_PokemonFanClub_EventScript_NotRequestedMon::
+	bufferspeciesname 0, VAR_0x8009
+	msgbox SlateportCity_PokemonFanClub_Text_DoesntLookLikeMonToMe, MSGBOX_DEFAULT
+	release
+	end
+
+SlateportCity_PokemonFanClub_EventScript_TradeCompleted::
+	msgbox SlateportCity_PokemonFanClub_Text_TradeComplete, MSGBOX_DEFAULT
+	release
+	end
+
+SlateportCity_PokemonFanClub_Text_IllTradeIfYouWant:
+	.string "I have a fascination with Wailmer.\n"
+	.string "Do you happen to have one?\l"
+	.string "I'll trade you my {STR_VAR_2} for\n"
+	.string "a {STR_VAR_1} if you want.$"
+
+SlateportCity_PokemonFanClub_Text_PleaseBeGoodToMyPokemon:
+	.string "Thank you so much!\n"
+	.string "Please take good care of Blubber!$"
+
+SlateportCity_PokemonFanClub_Text_DoesntLookLikeMonToMe:
+	.string "Huh? That doesn't look anything like\n"
+	.string "a {STR_VAR_1} to me.$"
+
+SlateportCity_PokemonFanClub_Text_YouDontWantToThatsOkay:
+	.string "Oh, if you're not up to it, that's okay.\n"
+	.string "But I really do love Wailmer…$"
+	
+SlateportCity_PokemonFanClub_Text_TradeComplete:
+	.string "Wailmer and I have been getting along\n"
+	.string "really well!\l"
+	.string "Are you and Blubber doing well?$"
+	

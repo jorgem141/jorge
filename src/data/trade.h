@@ -1041,7 +1041,38 @@ static const struct InGameTrade sIngameTrades[] =
         .otGender = FEMALE, 
         .sheen = 10,
         .requestedSpecies = SPECIES_SKITTY
-    }
+    },
+	[INGAME_TRADE_SEEL] =
+	{
+		.nickname = _("Blubber"),
+		.species = SPECIES_SEEL,
+		.ivs = {15, 15, 15, 15, 15, 15},
+		.abilityNum = 0,
+		.otId = 45671,
+		.conditions = {5, 5, 5, 5, 5},
+		.personality = 0x8B,
+		.heldItem = ITEM_ORAN_BERRY,
+		.mailNum = -1,
+		.otName = _("MOBY"),
+		.otGender = MALE,
+		.sheen = 10,
+		.requestedSpecies = SPECIES_WAILMER
+	},
+	[INGAME_TRADE_DELIBIRD] = 
+	{
+		.nickname = _("Frosty"),
+		.species = SPECIES_DELIBIRD,
+		.ivs = {15, 15, 15, 15, 15, 15},
+		.abilityNum = 0,
+		.otId = 42069,
+		.conditions = {5, 5, 5, 5, 5},
+		.personality = 0x7F,
+		.heldItem = -1,
+		.otName = _("JACK"),
+		.otGender = MALE,
+		.sheen = 10,
+		.requestedSpecies = SPECIES_SKARMORY
+	}
 };
 
 static const u16 sIngameTradeMail[][MAIL_WORDS_COUNT + 1] =

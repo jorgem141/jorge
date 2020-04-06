@@ -1,0 +1,45 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_ALTERING_CAVE_WATER",
+    "layout": "LAYOUT_ALTERING_CAVE_WATER",
+    "map_type": "MAP_TYPE_OCEAN_ROUTE",
+    "music": "MUS_DEEPDEEP",
+    "name": "AlteringCave_Water",
+    "object_events": [
+    ],
+    "region_map_section": "MAPSEC_ALTERING_CAVE",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_ALTERING_CAVE",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 9,
+            "y": 20
+        },
+        {
+            "dest_map": "MAP_ALTERING_CAVE",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 10,
+            "y": 20
+        },
+        {
+            "dest_map": "MAP_ALTERING_CAVE",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 11,
+            "y": 20
+        }
+    ],
+    "weather": "WEATHER_NONE"
+}

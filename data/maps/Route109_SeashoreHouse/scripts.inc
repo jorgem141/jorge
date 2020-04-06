@@ -186,7 +186,7 @@ Route109_SeashoreHouse_GivePokemonSmoochum::
 	msgbox Text_TakeSmoochum, MSGBOX_DEFAULT
 	getpartysize
 	compare VAR_RESULT, 6
-	goto_if_eq Script_PlayerHasFullParty
+	goto_if_eq Script_PlayerHasFullPartySeashore
 	givemon SPECIES_SMOOCHUM, 15, ITEM_NONE
 	playfanfare MUS_FANFA4
 	msgbox Text_RecievedSmoochum, MSGBOX_DEFAULT
@@ -195,8 +195,8 @@ Route109_SeashoreHouse_GivePokemonSmoochum::
 	release
 	end
 	
-Script_PlayerHasFullParty::
-	msgbox Text_PlayerHasFullParty, MSGBOX_DEFAULT
+Script_PlayerHasFullPartySeashore::
+	msgbox Text_PlayerHasFullPartySeashore, MSGBOX_DEFAULT
 	release
 	end
 	
@@ -209,7 +209,7 @@ Text_TakeSmoochum:
 Text_RecievedSmoochum:
 	.string "{PLAYER} received a Smoochum!$"
 	
-Text_PlayerHasFullParty:
+Text_PlayerHasFullPartySeashore:
 	.string "Oh, it looks like your party is full.$"
 	
 Script_Smoochum_Got:

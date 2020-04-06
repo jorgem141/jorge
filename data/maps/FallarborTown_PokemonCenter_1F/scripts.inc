@@ -110,3 +110,70 @@ FallarborTown_PokemonCenter_1F_Text_PlantHardyTrees: @ 8200E8B
 	.string "seedlings of hardy trees that thrive\l"
 	.string "even in volcanic ash.$"
 
+FallarborTown_PokemonCenter_EventScript_Trader::
+	lock
+	faceplayer
+	goto_if_set FLAG_DELIBIRD_NPC_TRADE_COMPLETED, FallarborTown_PokemonCenter_EventScript_TradeCompleted
+	setvar VAR_0x8008, INGAME_TRADE_DELIBIRD
+	copyvar VAR_0x8004, VAR_0x8008
+	specialvar VAR_RESULT, GetInGameTradeSpeciesInfo
+	copyvar VAR_0x8009, VAR_RESULT
+	msgbox FallarborTown_PokemonCenter_Text_IllTradeIfYouWant, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq FallarborTown_PokemonCenter_EventScript_DeclineTrade
+	special ChoosePartyMon
+	waitstate
+	copyvar VAR_0x800A, VAR_0x8004
+	compare VAR_0x8004, 255
+	goto_if_eq FallarborTown_PokemonCenter_EventScript_DeclineTrade
+	copyvar VAR_0x8005, VAR_0x800A
+	specialvar VAR_RESULT, GetTradeSpecies
+	copyvar VAR_0x800B, VAR_RESULT
+	compare VAR_RESULT, VAR_0x8009
+	goto_if_ne FallarborTown_PokemonCenter_EventScript_NotRequestedMon
+	copyvar VAR_0x8004, VAR_0x8008
+	copyvar VAR_0x8005, VAR_0x800A
+	special CreateInGameTradePokemon
+	special DoInGameTradeScene
+	waitstate
+	msgbox FallarborTown_PokemonCenter_Text_PleaseBeGoodToMyPokemon, MSGBOX_DEFAULT
+	setflag FLAG_DELIBIRD_NPC_TRADE_COMPLETED
+	release
+	end
+
+FallarborTown_PokemonCenter_EventScript_DeclineTrade::
+	msgbox FallarborTown_PokemonCenter_Text_YouDontWantToThatsOkay, MSGBOX_DEFAULT
+	release
+	end
+
+FallarborTown_PokemonCenter_EventScript_NotRequestedMon::
+	bufferspeciesname 0, VAR_0x8009
+	msgbox FallarborTown_PokemonCenter_Text_DoesntLookLikeMonToMe, MSGBOX_DEFAULT
+	release
+	end
+
+FallarborTown_PokemonCenter_EventScript_TradeCompleted::
+	msgbox FallarborTown_PokemonCenter_Text_TradeComplete, MSGBOX_DEFAULT
+	release
+	end
+
+FallarborTown_PokemonCenter_Text_IllTradeIfYouWant:
+	.string "Skarmory are just the coolest..\n"
+	.string "Do you have one?\l"
+	.string "I'll trade you my {STR_VAR_2} for\n"
+	.string "a {STR_VAR_1} if you do!$"
+
+FallarborTown_PokemonCenter_Text_PleaseBeGoodToMyPokemon:
+	.string "Thank you so much!$"
+
+FallarborTown_PokemonCenter_Text_DoesntLookLikeMonToMe:
+	.string "Huh? That doesn't look anything like\n"
+	.string "a {STR_VAR_1} to me.$"
+
+FallarborTown_PokemonCenter_Text_YouDontWantToThatsOkay:
+	.string "Oh, if you're not up to it, that's okay.\n"
+	.string "But I really do love Skarmory…$"
+	
+FallarborTown_PokemonCenter_Text_TradeComplete:
+	.string "Delibird is a really rare\n"
+	.string "Pokémon from the Johto region!$"

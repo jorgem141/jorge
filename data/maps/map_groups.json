@@ -321,7 +321,12 @@
         "TerraCave_Entrance",
         "TerraCave_End",
         "AlteringCave",
-        "MeteorFalls_StevensCave"
+        "MeteorFalls_StevensCave",
+        "AlterinCave_ice",
+        "AlteringCave_Fire",
+        "AlteringCave_Forest",
+        "AlteringCave_Water",
+        "AlteringCave_Electric"
     ],
     "gMapGroup25": [
         "SecretBase_RedCave1",

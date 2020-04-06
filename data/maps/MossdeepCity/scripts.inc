@@ -1,3 +1,6 @@
+#include "list_menu.h"
+#include "script_menu.c"
+
 MossdeepCity_MapScripts:: @ 81E4A96
 	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_OnTransition
 	.byte 0
@@ -53,7 +56,15 @@ MossdeepCity_EventScript_Woman:: @ 81E4B0B
 	end
 
 MossdeepCity_EventScript_WhiteRock:: @ 81E4B14
+	lock
 	msgbox MossdeepCity_Text_ItsAWhiteRock, MSGBOX_SIGN
+	goto_if_set FLAG_WISH_ACTIVE, Script_ActiveWish
+	msgbox MossdeepCity_Text_WhiteRockYesNo, MSGBOX_YESNO
+	compare VAR_RESULT, 0
+	goto_if_eq Script_NoWish
+	Script_WhiteRock_Tribute
+	setflag FLAG_WISH_ACTIVE
+	release
 	end
 
 MossdeepCity_EventScript_GymSign:: @ 81E4B1D
@@ -389,10 +400,131 @@ MossdeepCity_Text_SpecialSpaceCenterRock: @ 81E529D
 	.string "When you make a wish, what do you use?\n"
 	.string "Do you wish upon a star?\p"
 	.string "I use a wish tag to make it happen.\n"
-	.string "That's what I do.$"
+	.string "That's what I do.\p"
+	.string "I heard that some wishes\n"
+	.string "are granted to strong trainers.$"
 
 MossdeepCity_Text_ItsAWhiteRock: @ 81E5396
-	.string "It's a white rock.$"
+	.string "It's a white rock used for\n"
+	.string "making wishes come true.$"
+	
+MossdeepCity_Text_WhiteRockYesNo::
+	.string "Will you make a tribute\n"
+	.string "and make a wish?$"
+	
+Script_WhiteRock_Tribute::
+	scrollingmultichoice, 1, 2, 3, 5, TRUE
+	compare VAR_RESULT, 0
+	goto_if_eq Script_WaveIncense
+	compare VAR_RESULT, 1
+	goto_if_eq Script_SeaIncense
+	compare VAR_RESULT, 2
+	goto_if_eq Script_OddIncense
+	compare VAR_RESULT, 3
+	goto_if_eq Script_PureIncense
+	compare VAR_RESULT, 4
+	goto_if_eq Script_RoseIncense
+	compare VAR_RESULT, 5
+	goto_if_eq Script_IceStone
+	compare VAR_RESULT, 6
+	goto_if_eq Script_FireStone
+	compare VAR_RESULT, 7
+	goto_if_eq Script_ThunderStone
+	
+Script_WaveIncense::
+	checkitem ITEM_WAVE_INCENSE, 1
+	compare VAR_RESULT, 0
+	goto_if_eq Script_NoTributeItem
+	msgbox Text_BurnedIncense, MSGBOX_DEFAULT
+	takeitem ITEM_WAVE_INCENSE, 1
+	setflag FLAG_SUICUNE_CAVE
+	
+Script_SeaIncense::
+	checkitem ITEM_SEA_INCENSE, 1
+	compare VAR_RESULT, 0
+	goto_if_eq Script_NoTributeItem
+	msgbox Text_BurnedIncense, MSGBOX_DEFAULT
+	takeitem ITEM_SEA_INCENSE, 1
+	setflag FLAG_SUICUNE_CAVE
+	
+Script_OddIncense::
+	checkitem ITEM_ODD_INCENSE, 1
+	compare VAR_RESULT, 0
+	goto_if_eq Script_NoTributeItem
+	msgbox Text_BurnedIncense, MSGBOX_DEFAULT
+	takeitem ITEM_ODD_INCENSE, 1
+	setflag FLAG_MEWTWO_CAVE
+	
+Script_PureIncense::
+	checkitem ITEM_PURE_INCENSE, 1
+	compare VAR_RESULT, 0
+	goto_if_eq Script_NoTributeItem
+	msgbox Text_BurnedIncense, MSGBOX_DEFAULT
+	takeitem ITEM_PURE_INCENSE, 1
+	setflag FLAG_JIRACHI_CAVE
+	
+Script_RoseIncense::
+	checkitem ITEM_WAVE_INCENSE, 1
+	compare VAR_RESULT, 0
+	goto_if_eq Script_NoTributeItem
+	msgbox Text_BurnedIncense, MSGBOX_DEFAULT
+	takeitem ITEM_ROSE_INCENSE, 1
+	setflag FLAG_CELEBI_CAVE
+	
+Script_IceStone::
+	checkitem ITEM_ICE_STONE, 1
+	compare VAR_RESULT, 0
+	goto_if_eq Script_NoTributeItem
+	msgbox Text_BurnedIncense, MSGBOX_DEFAULT
+	takeitem ITEM_ICE_STONE, 1
+	setflag FLAG_ARTICUNO_CAVE
+	
+Script_FireStone::
+	checkitem ITEM_FIRE_STONE, 1
+	compare VAR_RESULT, 0
+	goto_if_eq Script_NoTributeItem
+	msgbox Text_BurnedIncense, MSGBOX_DEFAULT
+	takeitem ITEM_FIRE_STONE, 1
+	setflag FLAG_MOLTRES_CAVE
+	
+Script_ThunderStone::
+	checkitem ITEM_THUNDER_STONE, 1
+	compare VAR_RESULT, 0
+	goto_if_eq Script_NoTributeItem
+	msgbox Text_BurnedIncense, MSGBOX_DEFAULT
+	takeitem ITEM_THUNDER_STONE, 1
+	setflag FLAG_ZAPDOS_CAVE	
+	
+Script_ActiveWish::
+	msgbox Text_ActiveWish, MSGBOX_DEFAULT
+	release
+	end
+
+Text_BurnedIncense::
+	.string "You left a tribute\n"
+	.string "and made your wish!$"
+
+Text_ActiveWish::
+	.string "There is currently\n"
+	.string "a wish being granted.$"
+	
+Script_NoWish::
+	msgbox Text_NoWish, MSGBOX_DEFAULT
+	release
+	end
+	
+Text_NoWish::
+	.string "You decided not\n"
+	.string "to make a wish.$"
+	
+Script_NoTributeItem::
+	msgbox Text_NoTributeItem, MSGBOX_DEFAULT
+	release
+	end
+	
+Text_NoTributeItem::
+	.string "You don't have the item\n"
+	.string "needed to make a wish.$"
 
 MossdeepCity_Text_GymSign: @ 81E53A9
 	.string "MOSSDEEP CITY POKéMON GYM\n"

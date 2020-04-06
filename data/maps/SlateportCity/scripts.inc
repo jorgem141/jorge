@@ -128,7 +128,7 @@ SlateportCity_EventScript_EnergyGuru:: @ 81DCDBD
 
 SlateportCity_Pokemart_EnergyGuru: @ 81DCDD4
 	.2byte ITEM_FIRE_STONE
-	.2byte ITEM_LEAF_STONE
+	.2byte ITEM_WATER_STONE
 	.2byte ITEM_THUNDER_STONE
 	.2byte ITEM_LEAF_STONE
 	.2byte ITEM_ICE_STONE

@@ -1118,3 +1118,47 @@ LilycoveCity_ContestLobby_Text_MadePokeblocksWithFamily: @ 821B3FC
 	.string "I bet you can make smoother, better\n"
 	.string "{POKEBLOCK}S if you have more people.$"
 
+LilycoveCity_ContestLobby_EventScript_GiveSneasel::
+	lock
+	faceplayer
+	goto_if_set FLAG_SNEASEL_GOT, Script_Sneasel_Got
+	msgbox Text_TakeSneasel, MSGBOX_DEFAULT
+	getpartysize
+	compare VAR_RESULT, 6
+	goto_if_eq Script_PlayerHasFullPartyLilycove
+	givemon SPECIES_SNEASEL, 30, ITEM_NEVER_MELT_ICE
+	playfanfare MUS_FANFA4
+	msgbox Text_RecievedSneasel, MSGBOX_DEFAULT
+	setflag [FLAG_SNEASEL_GOT]
+	waitfanfare
+	release
+	end
+	
+Script_PlayerHasFullPartyLilycove::
+	msgbox Text_PlayerHasFullPartyLilycove, MSGBOX_DEFAULT
+	release
+	end
+	
+Text_TakeSneasel:
+	.string "Are you here to\n"
+	.string "take part in Contests?l"
+	.string "A cool trainer like\n"
+	.string "deserves a cool Pokémon!\l"
+	.string "Don't be shy, take it!n"
+	.string "I insist!$"
+	
+Text_RecievedSneasel:
+	.string "{PLAYER} received a Sneasel!$"
+	
+Text_PlayerHasFullPartyLilycove:
+	.string "Oh, it looks like your party is full.$"
+	
+Script_Sneasel_Got:
+	msgbox Text_Sneasel_Got, MSGBOX_DEFAULT
+	release
+	end
+
+Text_Sneasel_Got:
+	.string "I can't wait to see\n"
+	.string "your performance!$"
+	

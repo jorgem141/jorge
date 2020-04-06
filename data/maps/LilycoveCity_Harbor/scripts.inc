@@ -620,3 +620,25 @@ LilycoveCity_Harbor_Text_SailorFerryAvailable: @ 821E976
 	.string "The folks at the SHIPYARD in SLATEPORT\n"
 	.string "must've worked extra hard.\p"
 	.string "Well, it's my turn to get busy now!$"
+
+
+LilycoveCity_Harbor_Script_EventMart::
+	lock
+	faceplayer
+	message Text_EventShopGreeting
+	waitmessage
+	pokemart LilycoveCity_Harbor_EventShop
+	msgbox Text_EventShopFarewell, MSGBOX_DEFAULT
+	release
+	end
+	
+	.align 2
+LilycoveCity_Harbor_EventShop:
+	.2byte ITEM_EON_TICKET
+	.2byte ITEM_MYSTIC_TICKET
+	.2byte ITEM_AURORA_TICKET
+	.2byte ITEM_OLD_SEA_MAP
+	.2byte ITEM_NONE
+	release
+	end
+	
